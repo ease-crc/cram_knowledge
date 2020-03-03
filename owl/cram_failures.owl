@@ -1,0 +1,247 @@
+Prefix(:=<http://www.ease-crc.org/ont/cram_failures.owl#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.ease-crc.org/ont/cram_failures.owl>
+Import(<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl>)
+
+Declaration(Class(:CRAMActionlibTimeout))
+Declaration(Class(:CRAMDeliveringFailed))
+Declaration(Class(:CRAMDesignatorError))
+Declaration(Class(:CRAMDesignatorGoalParsingFailure))
+Declaration(Class(:CRAMDesignatorReferenceFailure))
+Declaration(Class(:CRAMEnvironmentManipulationImpossible))
+Declaration(Class(:CRAMEnvironmentUnreachable))
+Declaration(Class(:CRAMFailure))
+Declaration(Class(:CRAMFetchingFailed))
+Declaration(Class(:CRAMGripperClosedCompletely))
+Declaration(Class(:CRAMGripperGoalNotReached))
+Declaration(Class(:CRAMGripperLowLevelFailure))
+Declaration(Class(:CRAMHighLevelFailure))
+Declaration(Class(:CRAMLookingHighLevelFailure))
+Declaration(Class(:CRAMLowLevelFailure))
+Declaration(Class(:CRAMManipulationGoalInCollision))
+Declaration(Class(:CRAMManipulationGoalNotReached))
+Declaration(Class(:CRAMManipulationLowLevelFailure))
+Declaration(Class(:CRAMManipulationPoseUnreachable))
+Declaration(Class(:CRAMNavigationGoalInCollision))
+Declaration(Class(:CRAMNavigationGoalNotReached))
+Declaration(Class(:CRAMNavigationHighLevelFailure))
+Declaration(Class(:CRAMNavigationLowLevelFailure))
+Declaration(Class(:CRAMNavigationPoseUnreachable))
+Declaration(Class(:CRAMObjectNowhereToBeFound))
+Declaration(Class(:CRAMObjectUndeliverable))
+Declaration(Class(:CRAMObjectUnfetchable))
+Declaration(Class(:CRAMObjectUnreachable))
+Declaration(Class(:CRAMPTUGoalNotReached))
+Declaration(Class(:CRAMPTUGoalUnreachable))
+Declaration(Class(:CRAMPTULowLevelFailure))
+Declaration(Class(:CRAMPerceptionLowLevelFailure))
+Declaration(Class(:CRAMPerceptionObjectNotFound))
+Declaration(Class(:CRAMPerceptionObjectNotInWorld))
+Declaration(Class(:CRAMSearchingFailed))
+Declaration(Class(:CRAMTorsoGoalNotReached))
+Declaration(Class(:CRAMTorsoGoalUnreachable))
+Declaration(Class(:CRAMTorsoLowLevelFailure))
+
+
+############################
+#   Classes
+############################
+
+# Class: :CRAMActionlibTimeout (:CRAMActionlibTimeout)
+
+AnnotationAssertion(rdfs:comment :CRAMActionlibTimeout "Low-level action timed out.")
+SubClassOf(:CRAMActionlibTimeout :CRAMLowLevelFailure)
+
+# Class: :CRAMDeliveringFailed (:CRAMDeliveringFailed)
+
+AnnotationAssertion(rdfs:comment :CRAMDeliveringFailed "Robot tried to deliver the object from many different base positions and different arms and different destination orientations and failed nonetheless, the planner is going to give up and fail to top level.")
+SubClassOf(:CRAMDeliveringFailed :CRAMHighLevelFailure)
+
+# Class: :CRAMDesignatorError (:CRAMDesignatorError)
+
+AnnotationAssertion(rdfs:comment :CRAMDesignatorError "Something went wrong with designator calculations, most often happens when a designator cannot be resolved.")
+SubClassOf(:CRAMDesignatorError :CRAMFailure)
+
+# Class: :CRAMDesignatorGoalParsingFailure (:CRAMDesignatorGoalParsingFailure)
+
+AnnotationAssertion(rdfs:comment :CRAMDesignatorGoalParsingFailure "Tried to perform an action but it had an explicit goal and that goal was gibberish.")
+SubClassOf(:CRAMDesignatorGoalParsingFailure :CRAMDesignatorError)
+
+# Class: :CRAMDesignatorReferenceFailure (:CRAMDesignatorReferenceFailure)
+
+AnnotationAssertion(rdfs:comment :CRAMDesignatorReferenceFailure "Tried to perform a motion or an action but the designator could not be resolved.")
+SubClassOf(:CRAMDesignatorReferenceFailure :CRAMDesignatorError)
+
+# Class: :CRAMEnvironmentManipulationImpossible (:CRAMEnvironmentManipulationImpossible)
+
+AnnotationAssertion(rdfs:comment :CRAMEnvironmentManipulationImpossible "Robot tried to open or close a container from many different base positions and failed nonetheless.")
+SubClassOf(:CRAMEnvironmentManipulationImpossible :CRAMHighLevelFailure)
+
+# Class: :CRAMEnvironmentUnreachable (:CRAMEnvironmentUnreachable)
+
+AnnotationAssertion(rdfs:comment :CRAMEnvironmentUnreachable "Robot tried to open or close a container from given base pose but the trajectory was unreachable or would cause collisions.")
+SubClassOf(:CRAMEnvironmentUnreachable :CRAMHighLevelFailure)
+
+# Class: :CRAMFailure (:CRAMFailure)
+
+AnnotationAssertion(rdfs:comment :CRAMFailure "A failure in a task where the agent is a robot running CRAM.")
+SubClassOf(:CRAMFailure <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#EventType>)
+
+# Class: :CRAMFetchingFailed (:CRAMFetchingFailed)
+
+AnnotationAssertion(rdfs:comment :CRAMFetchingFailed "Robot tried to pick up the object from many different base positions and different arms and grasps and failed nonetheless, the planner is going to give up and fail to top level.")
+SubClassOf(:CRAMFetchingFailed :CRAMHighLevelFailure)
+
+# Class: :CRAMGripperClosedCompletely (:CRAMGripperClosedCompletely)
+
+AnnotationAssertion(rdfs:comment :CRAMGripperClosedCompletely "Tried to grasp an object but the gripper closed completely.")
+SubClassOf(:CRAMGripperClosedCompletely :CRAMGripperLowLevelFailure)
+
+# Class: :CRAMGripperGoalNotReached (:CRAMGripperGoalNotReached)
+
+AnnotationAssertion(rdfs:comment :CRAMGripperGoalNotReached "Given joint angle for the gripper was not reached.")
+SubClassOf(:CRAMGripperGoalNotReached :CRAMGripperLowLevelFailure)
+
+# Class: :CRAMGripperLowLevelFailure (:CRAMGripperLowLevelFailure)
+
+AnnotationAssertion(rdfs:comment :CRAMGripperLowLevelFailure "Something went wrong when using the gripper.")
+SubClassOf(:CRAMGripperLowLevelFailure :CRAMManipulationLowLevelFailure)
+
+# Class: :CRAMHighLevelFailure (:CRAMHighLevelFailure)
+
+AnnotationAssertion(rdfs:comment :CRAMHighLevelFailure "Some failure that the planner throws.")
+SubClassOf(:CRAMHighLevelFailure :CRAMFailure)
+
+# Class: :CRAMLookingHighLevelFailure (:CRAMLookingHighLevelFailure)
+
+AnnotationAssertion(rdfs:comment :CRAMLookingHighLevelFailure "Some failure that the planner throws caused by neck movements.")
+SubClassOf(:CRAMLookingHighLevelFailure :CRAMHighLevelFailure)
+
+# Class: :CRAMLowLevelFailure (:CRAMLowLevelFailure)
+
+AnnotationAssertion(rdfs:comment :CRAMLowLevelFailure "Some failure that robot controllers or perception throws")
+SubClassOf(:CRAMLowLevelFailure :CRAMFailure)
+
+# Class: :CRAMManipulationGoalInCollision (:CRAMManipulationGoalInCollision)
+
+AnnotationAssertion(rdfs:comment :CRAMManipulationGoalInCollision "Robot would like to move arms somewhere but planner thinks it would cause collision.")
+SubClassOf(:CRAMManipulationGoalInCollision :CRAMHighLevelFailure)
+
+# Class: :CRAMManipulationGoalNotReached (:CRAMManipulationGoalNotReached)
+
+AnnotationAssertion(rdfs:comment :CRAMManipulationGoalNotReached "Moving arm goal was not reached (when executing the trajectory on the robot).")
+SubClassOf(:CRAMManipulationGoalNotReached :CRAMManipulationLowLevelFailure)
+
+# Class: :CRAMManipulationLowLevelFailure (:CRAMManipulationLowLevelFailure)
+
+AnnotationAssertion(rdfs:comment :CRAMManipulationLowLevelFailure "Parent for all the other low-level manipulation failures.")
+SubClassOf(:CRAMManipulationLowLevelFailure :CRAMLowLevelFailure)
+
+# Class: :CRAMManipulationPoseUnreachable (:CRAMManipulationPoseUnreachable)
+
+AnnotationAssertion(rdfs:comment :CRAMManipulationPoseUnreachable "IK solver or some other estimator thinks the pose will be unreachable.")
+SubClassOf(:CRAMManipulationPoseUnreachable :CRAMManipulationLowLevelFailure)
+
+# Class: :CRAMNavigationGoalInCollision (:CRAMNavigationGoalInCollision)
+
+AnnotationAssertion(rdfs:comment :CRAMNavigationGoalInCollision "Robot would like to drive somewhere, but planner thinks it would cause collision.")
+SubClassOf(:CRAMNavigationGoalInCollision :CRAMNavigationHighLevelFailure)
+
+# Class: :CRAMNavigationGoalNotReached (:CRAMNavigationGoalNotReached)
+
+AnnotationAssertion(rdfs:comment :CRAMNavigationGoalNotReached "Tried to execute the navigation goal but ended up not at the goal.")
+SubClassOf(:CRAMNavigationGoalNotReached :CRAMNavigationLowLevelFailure)
+
+# Class: :CRAMNavigationHighLevelFailure (:CRAMNavigationHighLevelFailure)
+
+AnnotationAssertion(rdfs:comment :CRAMNavigationHighLevelFailure "Some failure that the planner throws caused by navigation.")
+SubClassOf(:CRAMNavigationHighLevelFailure :CRAMHighLevelFailure)
+
+# Class: :CRAMNavigationLowLevelFailure (:CRAMNavigationLowLevelFailure)
+
+AnnotationAssertion(rdfs:comment :CRAMNavigationLowLevelFailure "Parent for all the other low-level navigation failures.")
+SubClassOf(:CRAMNavigationLowLevelFailure :CRAMLowLevelFailure)
+
+# Class: :CRAMNavigationPoseUnreachable (:CRAMNavigationPoseUnreachable)
+
+AnnotationAssertion(rdfs:comment :CRAMNavigationPoseUnreachable "Some low-level estimator (in our case bullet projection) thinks the goal will be unreachable, probably because of collisions.")
+SubClassOf(:CRAMNavigationPoseUnreachable :CRAMNavigationLowLevelFailure)
+
+# Class: :CRAMObjectNowhereToBeFound (:CRAMObjectNowhereToBeFound)
+
+AnnotationAssertion(rdfs:comment :CRAMObjectNowhereToBeFound "Robot tried to find the object in the given location area from many different base positions and looking angles and failed nonetheless, but the planner will try more samples.")
+SubClassOf(:CRAMObjectNowhereToBeFound :CRAMHighLevelFailure)
+
+# Class: :CRAMObjectUndeliverable (:CRAMObjectUndeliverable)
+
+AnnotationAssertion(rdfs:comment :CRAMObjectUndeliverable "Robot tried to deliver the object from many different base positions and different arms and different destination orientations and failed nonetheless, the planner is going to try more samples.")
+SubClassOf(:CRAMObjectUndeliverable :CRAMHighLevelFailure)
+
+# Class: :CRAMObjectUnfetchable (:CRAMObjectUnfetchable)
+
+AnnotationAssertion(rdfs:comment :CRAMObjectUnfetchable "Robot tried to pick up the object from many different base positions and different arms and grasps and failed nonetheless, the planner is going to try so more samples.")
+SubClassOf(:CRAMObjectUnfetchable :CRAMHighLevelFailure)
+
+# Class: :CRAMObjectUnreachable (:CRAMObjectUnreachable)
+
+AnnotationAssertion(rdfs:comment :CRAMObjectUnreachable "Object is unreachable from current robot base pose after trying different arms and grasps.")
+SubClassOf(:CRAMObjectUnreachable :CRAMHighLevelFailure)
+
+# Class: :CRAMPTUGoalNotReached (:CRAMPTUGoalNotReached)
+
+AnnotationAssertion(rdfs:comment :CRAMPTUGoalNotReached "Robot tried to reach the goal but didn't manage it.")
+SubClassOf(:CRAMPTUGoalNotReached :CRAMPTULowLevelFailure)
+
+# Class: :CRAMPTUGoalUnreachable (:CRAMPTUGoalUnreachable)
+
+AnnotationAssertion(rdfs:comment :CRAMPTUGoalUnreachable "Estimator (probably IK) thinks given goal is not going to be reachable.")
+SubClassOf(:CRAMPTUGoalUnreachable :CRAMPTULowLevelFailure)
+
+# Class: :CRAMPTULowLevelFailure (:CRAMPTULowLevelFailure)
+
+AnnotationAssertion(rdfs:comment :CRAMPTULowLevelFailure "Parent for all low-level PTU failures.")
+SubClassOf(:CRAMPTULowLevelFailure :CRAMLowLevelFailure)
+
+# Class: :CRAMPerceptionLowLevelFailure (:CRAMPerceptionLowLevelFailure)
+
+AnnotationAssertion(rdfs:comment :CRAMPerceptionLowLevelFailure "Parent for low-level perception failures.")
+SubClassOf(:CRAMPerceptionLowLevelFailure :CRAMLowLevelFailure)
+
+# Class: :CRAMPerceptionObjectNotFound (:CRAMPerceptionObjectNotFound)
+
+AnnotationAssertion(rdfs:comment :CRAMPerceptionObjectNotFound "Perception system said it can't see the object with the given description.")
+SubClassOf(:CRAMPerceptionObjectNotFound :CRAMPerceptionLowLevelFailure)
+
+# Class: :CRAMPerceptionObjectNotInWorld (:CRAMPerceptionObjectNotInWorld)
+
+AnnotationAssertion(rdfs:comment :CRAMPerceptionObjectNotInWorld "Belief state says there is no object in the believed world with the given description.")
+SubClassOf(:CRAMPerceptionObjectNotInWorld :CRAMPerceptionLowLevelFailure)
+
+# Class: :CRAMSearchingFailed (:CRAMSearchingFailed)
+
+AnnotationAssertion(rdfs:comment :CRAMSearchingFailed "Robot tried to find the object in the given location area from maximum number of different base positions and looking angles and failed, the planner is going to give up and fail to top level.")
+SubClassOf(:CRAMSearchingFailed :CRAMHighLevelFailure)
+
+# Class: :CRAMTorsoGoalNotReached (:CRAMTorsoGoalNotReached)
+
+AnnotationAssertion(rdfs:comment :CRAMTorsoGoalNotReached "The torso attempted to reach a goal but did not manage to.")
+SubClassOf(:CRAMTorsoGoalNotReached :CRAMTorsoLowLevelFailure)
+
+# Class: :CRAMTorsoGoalUnreachable (:CRAMTorsoGoalUnreachable)
+
+AnnotationAssertion(rdfs:comment :CRAMTorsoGoalUnreachable "IK doesn't find a solution for the torso goal.")
+SubClassOf(:CRAMTorsoGoalUnreachable :CRAMTorsoLowLevelFailure)
+
+# Class: :CRAMTorsoLowLevelFailure (:CRAMTorsoLowLevelFailure)
+
+AnnotationAssertion(rdfs:comment :CRAMTorsoLowLevelFailure "Parent for all low-level torso failures.")
+SubClassOf(:CRAMTorsoLowLevelFailure :CRAMLowLevelFailure)
+
+
+)
