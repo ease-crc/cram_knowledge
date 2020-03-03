@@ -1,0 +1,18 @@
+<package>
+  <name>cram_knowledge</name>
+  <version>0.0.1</version>
+  <description>Formalized knowledge for use with CRAM</description>
+  <maintainer email="pomarlan@uni-bremen.de">Mihai Pomarlan</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://ease-crc.org</url>
+
+  <author>Daniel Beßler</author>
+  <author>Robert Porzel</author>
+  <author>Mihai Pomarlan</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>dul</build_depend>
+  <run_depend>dul</run_depend>
+</package>
