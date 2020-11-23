@@ -1,0 +1,54 @@
+Prefix(:=<http://www.ease-crc.org/ont/cram_tasks.owl#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(soma:=<http://www.ease-crc.org/ont/SOMA#>)
+
+
+Ontology(<http://www.ease-crc.org/ont/cram_tasks.owl>
+Import(<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl>)
+Import(<http://www.ease-crc.org/ont/SOMA-ACT.owl>)
+
+
+############################
+#   Classes
+############################
+
+# Class: :GetActionGrasps (:GetActionGrasps)
+
+AnnotationAssertion(rdfs:comment :GetActionGrasps "Retrieve grasp poses for a manipulation action.")
+SubClassOf(:GetActionGrasps soma:GetTaskParameter)
+
+# Class: :GetActionGripperOpening (:GetActionGripperOpening)
+
+AnnotationAssertion(rdfs:comment :GetActionGripperOpening "Retrieve gripper opening for a manipulation action performed with a pincer-type gripper.")
+SubClassOf(:GetActionGripperOpening soma:GetTaskParameter)
+
+# Class: :GetActionGrippingEffort (:GetActionGrippingEffort)
+
+AnnotationAssertion(rdfs:comment :GetActionGrippingEffort "Retrieve grasping force for a manipulation action.")
+SubClassOf(:GetActionGrippingEffort soma:GetTaskParameter)
+
+# Class: :GetActionTrajectory (:GetActionTrajectory)
+
+AnnotationAssertion(rdfs:comment :GetActionTrajectory "Retrieve motion trajectory for a (usually manipulation) action.")
+SubClassOf(:GetActionTrajectory soma:GetTaskParameter)
+
+# Class: :GetContainerClosingDistance (:GetContainerClosingDistance)
+
+AnnotationAssertion(rdfs:comment :GetContainerClosingDistance "Retrieve a distance parameter used to close a container; e.g., how much to push a drawer before it closes would depend on how pulled out it is.")
+SubClassOf(:GetContainerClosingDistance soma:GetTaskParameter)
+
+# Class: :GetContainerOpeningDistance (:GetContainerOpeningDistance)
+
+AnnotationAssertion(rdfs:comment :GetContainerOpeningDistance "Retrieve a distance parameter used to open a container; e.g., how much to pull out a drawer such that its typical contents can be easily accessed and removed.")
+SubClassOf(:GetContainerOpeningDistance soma:GetTaskParameter)
+
+# Class: :GetLocationPoses (:GetLocationPoses)
+
+AnnotationAssertion(rdfs:comment :GetLocationPoses "Retrieve poses for a manipulation action.")
+SubClassOf(:GetLocationPoses soma:GetTaskParameter)
+
+)
